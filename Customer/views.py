@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+# from django.shortcuts import render
 
 from Customer.models import Customer
 from .forms import CustomerForm
@@ -24,6 +25,5 @@ def Customer_Update(request):
             return redirect ('/')
     context = {'form':form,}
     return render(request, 'customer.html',context)
-from django.shortcuts import render
 
 # Create your views here.

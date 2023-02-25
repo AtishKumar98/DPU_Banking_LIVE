@@ -7,5 +7,5 @@ from .models import *
 @admin.register(CustomerFeedback)
 class CustomerFeedbacK(admin.ModelAdmin):
     search_fields = ['name','email','phone_No']
-    list_display = ['name','email','phone_No','comment_Title']
+    list_display = ['name','email','phone_No']
     

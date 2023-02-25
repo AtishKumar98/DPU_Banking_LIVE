@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+import pyttsx3
+import speech_recognition as sr
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .form import *
@@ -10,6 +12,17 @@ from Transfer.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+
+
+# engine = pyttsx3.init('sapi5')
+# voices = engine.getProperty('voices')
+# # print(voices[1].id)
+# engine.setProperty('voice', voices[1].id)
+
+
+# def speak(audio):
+#     engine.say(audio)
+#     engine.runAndWait()
 
 
 @login_required(login_url='/login/')

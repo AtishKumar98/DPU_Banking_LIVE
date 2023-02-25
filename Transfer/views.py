@@ -16,15 +16,20 @@ def process_payment(request):
   if request.method == 'POST':
     form = Payment(request.POST)
     status = None
-
-    
+    kk=None
     if form.is_valid():
       x = form.cleaned_data['payor']
       y = form.cleaned_data['payee']
       z = decimal.Decimal(form.cleaned_data['amount'])
+      if UserBankAccount.objects.filter(account_no=x).exists() and UserBankAccount.objects.filter(account_no=x).exists():
+        payor = UserBankAccount.objects.select_for_update().get(account_no=x)
+        payee = UserBankAccount.objects.select_for_update().get(account_no=y)
+      else:
+        kk='Invalid Account'
 
-      payor = UserBankAccount.objects.select_for_update().get(account_no=x)
-      payee = UserBankAccount.objects.select_for_update().get(account_no=y)
+        # print(kk, '$$$$$$$$$$$$')
+        return redirect ('/')
+        
 
     with transaction.atomic():
      
@@ -37,11 +42,12 @@ def process_payment(request):
           status = "Insufficent balance"
         # current_user = request.user.account.all()
         # status.save()
+          payor.save()
+          payee.save()
+        
 
-
-
-        payor.save()
-        payee.save()
+        # payor.save()
+        # payee.save()
         report_balance = TransferMoney.objects.create(
             # name =  request.user,
             From_accno = payor,
@@ -56,9 +62,13 @@ def process_payment(request):
             messages.success(request , "Amount Paid Successfully") 
           elif report_balance.status =='Insufficent balance':
             messages.error(request , "Insufficent Funds Check Your Balance")
-          return redirect ('/') 
-        except UserBankAccount.DoesNotExist:
-          payee = None
+          elif UserBankAccount.objects.filter(account_no=x).exists() and UserBankAccount.objects.filter(account_no=x).exists():
+            kk='Invalid'
+            print(kk, '$$$$$$$$$$$$')
+            messages.error(request , "Oops Something Went Wrong Kindly Check Account Details ,Check Account number")
+            print(messages)
+            return redirect ('/')
+        except:
           messages.error(request , "Oops Something Went Wrong Kindly Check Account Details ,Check Account number")
         return redirect ('/') 
       
@@ -67,11 +77,11 @@ def process_payment(request):
       # customer.objects.filter(name=y).update(balance=F('balance') + z)
 
       # return HttpResponseRedirect('/transfer/')
-
   else:
     form = Payment()
     status = ''
-  return render(request, 'transfer.html' , {'form': form ,})
+    kk=''
+  return render(request, 'transfer.html' , {'form': form ,'kk':kk})
 
 
 
