@@ -26,10 +26,8 @@ def loan_system(request):
         compelete_duration =  loan_duration*12
         rate_check = (loan_rate*10) * (1/10)
         complete_rate = rate_check/compelete_duration
-        print(compelete_duration,rate_check,complete_rate)
         loan_down_payment = int(request.POST.get('down_payment'))
         emi = loan_emi(loan_amount,compelete_duration,complete_rate,loan_down_payment)
-        print(emi)
         
    context = {'emi':emi}
    return render (request,'loan_page.html',context)
