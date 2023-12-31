@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-import pyttsx3
-import speech_recognition as sr
+# import pyttsx3
+# import speech_recognition as sr
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from .form import *
@@ -14,14 +14,14 @@ from django.contrib import messages
 
 
 
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+# engine = pyttsx3.init('sapi5')
+# voices = engine.getProperty('voices')
+# engine.setProperty('voice', voices[1].id)
 
 
-def speak(audio):
-    engine.say(audio)
-    BR = engine.runAndWait()
+# def speak(audio):
+#     engine.say(audio)
+#     BR = engine.runAndWait()
 
 
 @login_required(login_url='/login/')
@@ -64,8 +64,8 @@ def index(request):
     return render (request, 'home.html' , context)
 
 def Dashboard(request):
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
+    # engine = pyttsx3.init()
+    # voices = engine.getProperty('voices')
     # for voice in voices:
     # if request.path == '/dashboard/':
     #     engine.setProperty('voice', voices[1].id)
