@@ -97,15 +97,19 @@
       text-decoration: none;
     }
     .jumbo{
-      background-image:linear-gradient(-45deg,#3a3c42,#e9dde0);
-      /* background-image: conic-gradient(#2c79ec 45deg, rgb(14, 94, 126) 90deg, rgb(11, 109, 189) 210deg); */
+      /* background-image:linear-gradient(-45deg,#3a3c42,#e9dde0); */
+      /* background-image: url('../static/img/Banner.jpg'); */
       color: rgb(0, 14, 29);
-      width: 96%; border: 1px black solid;
-      height: 40vh;
-      /* font-family:sans-serif; */
-      font-family: 'Arial Narrow Bold', sans-serif;
-      font-size: large;
-      border-radius: 20px;
+      width: 100%;
+      height: auto;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 1%;
+    }
+
+    .jumbo img{
+      width: 80%;
     }
     
 
@@ -123,19 +127,20 @@
       width: 100%;
       padding: 12px 20px;
       margin: 8px 0;
-      border: 1px black solid;
+      /* border: 1px black solid; */
       border-radius: 10px;
     }
     button.accounts {
       width: 100%;
       padding: 12px 20px;
+      border-radius: 15px;
       margin: 8px 0;
-      color: rgb(243, 237, 237);
-      background-image:linear-gradient(-180deg,#043450,#5d82c7);
+      color: rgb(26, 104, 207);
+      background-image:linear-gradient(-180deg,#89b1ee70,#ffffff);
       display: block;
+      font-weight: 600;
       text-decoration-style: none;
-      border: 2px black solid;
-      border-radius: 4px;
+      /* border: 2px black solid; */
       box-sizing: border-box;
      
     }
@@ -145,7 +150,7 @@
       padding: 12px 20px;
       margin: 8px 0;
       /* background-color: azure; */
-      background-image:linear-gradient(-180deg,#094385,#153c92);
+      /* background-image:linear-gradient(-180deg,#094385,#153c92); */
       color: rgb(255, 255, 255);
       display: block;
       border: 2px black solid;
@@ -222,6 +227,7 @@
               <li><a class="dropdown-item" href="/accounts/">Account</a></li>
               <li><a class="dropdown-item" href="/transfer/">Transfer</a></li>
               <li><a class="dropdown-item" href="/customer/">Profile</a></li>
+              <li><a class="dropdown-item" href="/accounts/loan_page/">Loan</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/services/">Banking Services</a></li>
               <li><a class="dropdown-item" href="/customerfeedback/">Customer Feedback</a></li>
@@ -246,7 +252,7 @@
 
   {% block content %}
   {% endblock content %}
-  <div class="footer-copyright fixed-bottom text-center py-2">© 2022 Copyright:  Atish Kumar
+  <div class="footer-copyright fixed-bottom text-center py-2 mt-5">© 2022 Copyright:  Atish Kumar
     <a href="/"> </a>
   </div>
   

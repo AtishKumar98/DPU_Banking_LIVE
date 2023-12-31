@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
+<body class = 'bg-dark text-light mb-5'>
 {% block content %}
-  <body class = 'bg-dark text-light'>
     
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
       <h4 class = 'm-2'>Credited from my account Report </h4  >
       <table class="table bg-dark text-light mt-5">
         <thead>
@@ -32,33 +32,36 @@
           </tbody>
         </table>
         <hr>
-        <h4 class = 'm-2'>Desposited To my account Report</h4>
-<table class="table bg-dark text-light mt-5">
+        
+
+       
+        <h4 class = 'm-2 '>Desposited To my account Report</h4>
+        <div class="mb-5" style="margin-bottom: 100%;">
+<table class="table bg-dark text-light mt-5 mb-5" >
   <thead>
       <tr>
           <th scope="col">Sr no</th>
-          <th scope="col">From Account</th>
+          <th scope="col">From  Account</th>
           <th scope="col">Amount</th>
           <!-- <th scope="col">Balance after Transaction</th> -->
           <th scope="col">Status</th>
       </tr>
   </thead>
-  <tbody>
+  <tbody class="mb-5">
    
 {% for d in c %}
-<tr>
+<tr class=" mt-5 mb-5 py-5">
 <td>{{d.id}}</td>
 <td>{{d.From_accno}}</td>
 <td>{{d.amount}}</td>
 <td>{{d.status}}</td>
-{% endfor %}
+</tr>
 
-    
-  </tr>
- 
+{% endfor %}
 </tbody>
 </table>
 
+</div>
 </div>
 {% endblock content %}
 

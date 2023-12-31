@@ -3,20 +3,26 @@
 {% block content %}
 
   <body class = 'bg-dark text-light'>
-    <div class="container bg-dark text-light">
+    <div class="container-fluid bg-dark text-light">
 
         <h1 class = 'm-2'>
           Transfer
           </h1>
         
         
-        <form class = 'form-control bg-dark text-light' method="POST" action = '/transfer/'>
+        <form class = 'form-control bg-dark text-light  p-5' method="POST" action = '/transfer/'>
             {% csrf_token %}
+            
+            <label for="{{ form.Acc_no.id_for_label }}">Account Number:</label><input type="text" name="payor" class="form-control bg-dark text-light" placeholder="Your Account" maxlength="30" required="" id="id_payor" value="{{ Acc_no }}" readonly>
+            <input type="text" name="payee" class="form-control" placeholder="To Account" maxlength="30" required="" id="id_payee">
+            <input type="text" name="amount" class="form-control" placeholder="Amount in ₹" maxlength="30" required="" id="id_amount">
+            <h6 class="mx-5 mt-3">Balance: {{Acc_no.balance}}</h6>
             <!-- <input class="form-control m-2 my-3" type="text" placeholder="Default input" value = '{{acc_no}}'  name="full_no" aria-label="Account No" readonly>
             <input class="form-control m-2 my-3" type="text" placeholder="Default input" value = '{{acc_no}}' name = 'username' aria-label="">
             <input class="form-control m-2 my-3" type="text" placeholder="Defaults input" aria-label="default input example"> -->
-        <div class="col-auto m-2">
-            {{form}}
+        
+        
+            <div class="col-auto m-2">
           
             <div class="d-grid gap-2">
             <button type="submit" class="btn btn-outline-success mb-3 mt-3 m-2"><b>Pay</b></button>

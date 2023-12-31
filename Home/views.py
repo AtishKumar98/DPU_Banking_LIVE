@@ -14,15 +14,14 @@ from django.contrib import messages
 
 
 
-# engine = pyttsx3.init('sapi5')
-# voices = engine.getProperty('voices')
-# # print(voices[1].id)
-# engine.setProperty('voice', voices[1].id)
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
 
 
-# def speak(audio):
-#     engine.say(audio)
-#     engine.runAndWait()
+def speak(audio):
+    engine.say(audio)
+    BR = engine.runAndWait()
 
 
 @login_required(login_url='/login/')
@@ -59,12 +58,20 @@ def loginpage(request):
 
     return render(request, 'login.html', context)
 
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def index(request):
     context= {}
     return render (request, 'home.html' , context)
 
 def Dashboard(request):
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    # for voice in voices:
+    # if request.path == '/dashboard/':
+    #     engine.setProperty('voice', voices[1].id)
+    #     BR = engine.say("Welcome To Dashboard")
+    #     BR = engine.runAndWait()
+    #     BR = engine.stop()
     all_account = UserBankAccount.objects.all()
     all_customer = Customer.objects.all()
     all_report = TransferMoney.objects.all()
@@ -72,9 +79,8 @@ def Dashboard(request):
         'account':all_account,
         'customer':all_customer, 
         'report':all_report, 
-  
     }
-    return render (request, 'dashboard.html', context)
+    return render (request, 'dashboard.html',  context)
 
 
 def update_cust(request,pk):
@@ -111,4 +117,4 @@ def delete_account(request,pk):
         return redirect('/')
     context = {'cust_delete':cust_delete}
     return render(request, 'delete.html',context)
-    return render (request, 'home.html' , context)
+    # return render (request, 'home.html' , context)

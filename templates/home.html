@@ -1,6 +1,10 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
+
+<style>
+</style>
 
 {% for message in messages %}
 <div class="container-fluid p-0">
@@ -9,26 +13,13 @@
       <span aria-hidden="True">&times;</span>
     </button>
     {{ message }}
-    {% if kk %}
-   
-    {% endif %}
   </div>
 </div>
 {% endfor %}
 <center>
-  <div class="card jumbo m-3">
-
-    <h1 class='m-5'>HSFC BANK {{kk}}</h1>
-    <figure class="text-center">
-      <blockquote class="blockquote">
-        <p>Solutions to your Banking Problem</p>
-      </blockquote>
-      <figcaption class="blockquote-footer text-light">
-        Quote By Organisations <cite title="Source Title">DPU COL</cite>
-      </figcaption>
-    </figure>
-    <b>DPU col Project. <br>&copy; 2022 - Developed By Atish Kumar</p>
-    </b>
+  <div class="jumbo">
+    <img src="../static/img/banner.png" alt="">
+  </div>
 </center>
 <!-- <p><a href="https://www.djangoproject.com/" class="accounts m-5">My GitHub &raquo;</a></p> -->
 </div>
@@ -41,7 +32,7 @@
   <div class="col-md-3">
     <a href='/dashboard/'>
       <div class="card bg-dark" style="width: 15rem;">
-        <img src="../static/img/perspective_matte.png" class="card-img-top" alt="...">
+        <img src="../static/img/dashboard.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts">Dashboard</button>
         </div>
@@ -52,9 +43,20 @@
   <div class="col-md-3">
     <a href='/accounts/'>
       <div class="card bg-dark" style="width: 15rem;">
-        <img src="../static/img/Safe_perspective_matte.png" class="card-img-top" alt="...">
+        <img src="../static/img/account.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts">Account</button>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-3">
+    <a href='{% url  "loan_system" %}'>
+      <div class="card bg-dark" style="width: 15rem;">
+        <img src="../static/img/loan.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <button class="accounts">Loan</button>
         </div>
       </div>
     </a>
@@ -62,7 +64,7 @@
   <div class="col-md-3">
     <a href='/transfer/'>
       <div class="card bg-dark" style="width: 15rem;">
-        <img src="../static/img/Bank_perspective_matte.png" class="card-img-top" alt="...">
+        <img src="../static/img/Transgfer.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts">Transfer</button>
         </div>
@@ -72,7 +74,7 @@
   <div class="col-md-3">
     <a href='/customer/'>
       <div class="card bg-dark" style="width: 15rem;">
-        <img src="../static/img/User_perspective_matte_s.png" class="card-img-top" alt="...">
+        <img src="../static/img/Profile.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts">My Profile</button>
         </div>
@@ -82,7 +84,7 @@
   <div class="col-md-3">
     <a href = '/services/'>
       <div class="card bg-dark" style="width: 15rem;">
-        <img src="../static/img/BankingServices.jpg" class="card-img-top" alt="...">
+        <img src="../static/img/ban-card.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts" >Banking Services</button>
         </div>
@@ -92,7 +94,7 @@
 <div class="col-md-3">
   <a href = '/customerfeedback/'>
     <div class="card bg-dark" style="width: 15rem;">
-      <img src="../static/img/CustomerFeedback.jpg" class="card-img-top" alt="...">
+      <img src="../static/img/market.png" class="card-img-top" alt="...">
       <div class="card-body">
         <button class="accounts" >Customer Feedback</button>
       </div>
@@ -103,7 +105,7 @@
   <div class="col-md-3">
     <a href = '/customerquery/'>
       <div class="card bg-dark" style="width: 15.8rem;">
-        <img src="../static/img/CustomerQuery.jpg" class="card-img-top" alt="...">
+        <img src="../static/img/hand_query.png" class="card-img-top" alt="...">
         <div class="card-body">
           <button class="accounts" >Customer Query</button>
         </div>
@@ -114,7 +116,7 @@
 
   <a href = '/contactus/'>
     <div class="card bg-dark" style="width: 15.5rem;">
-      <img src="../static/img/HelpIcon.jpg" class="card-img-top" alt="...">
+      <img src="../static/img/Contact_us.png" class="card-img-top" alt="...">
       <div class="card-body">
         <button class="accounts" >Contact Us</button>
       </div>

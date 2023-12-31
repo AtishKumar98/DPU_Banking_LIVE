@@ -3,7 +3,37 @@ from django.shortcuts import render
 from .models import *
 from Transfer.models import*
 from .forms import *
+import math
 # Create your views here.
+
+
+
+def loan_emi(amount,duration,rate,down_payment=0):
+   loan_amount = amount - down_payment
+   emi=loan_amount*rate*((1+rate)**duration)/(((1+rate)**duration)-1)
+   emi =math.ceil(emi)
+   return emi
+loan_emi(12500,8*12,0.1/12,3e5)
+
+
+def loan_system(request):
+   emi = 0
+   if request.method=='POST':
+        loan_amount = int(request.POST.get('loan_amount'))
+        loan_rate = int(request.POST.get('loan_rate'))
+
+        loan_duration = int(request.POST.get('loan_duration'))
+        compelete_duration =  loan_duration*12
+        rate_check = (loan_rate*10) * (1/10)
+        complete_rate = rate_check/compelete_duration
+        print(compelete_duration,rate_check,complete_rate)
+        loan_down_payment = int(request.POST.get('down_payment'))
+        emi = loan_emi(loan_amount,compelete_duration,complete_rate,loan_down_payment)
+        print(emi)
+        
+   context = {'emi':emi}
+   return render (request,'loan_page.html',context)
+
 def index(request):
     current_user = request.user.customer
     current_user_file = UserBankAccount.objects.filter(user = request.user)

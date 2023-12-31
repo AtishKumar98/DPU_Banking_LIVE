@@ -2,6 +2,7 @@
 
 {% block content %}
   <body>
+    <!-- {{BR}} -->
     <h4><center>Accounts</center></h4>
     <table class="table table-dark table-striped ">
       <thead>
@@ -107,4 +108,14 @@
 <div class = 'mb-5'>
 <br>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Text-to-speech functionality using pyttsx3
+        var engine = new SpeechSynthesisUtterance();
+        engine.text = "Welcome to Dashboard";
+        window.speechSynthesis.speak(engine);
+    });
+</script>
     {% endblock content %}
